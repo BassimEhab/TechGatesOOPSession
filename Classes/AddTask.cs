@@ -7,7 +7,7 @@ using TechGatesOOPSession.Interfaces;
 
 namespace TechGatesOOPSession.Classes
 {
-    public class AddTask : CheckStatus,ITaskExecution
+    public class AddTask : ITaskExecutor
     {
         private readonly Tasks _tasks;
         private TaskDetails _taskDetails;
@@ -29,7 +29,7 @@ namespace TechGatesOOPSession.Classes
             _tasks.AllTasks.Add(_taskDetails);
         }
 
-        public void excute()
+        public void Execute()
         {
             string title;
             string Description;
@@ -50,7 +50,7 @@ namespace TechGatesOOPSession.Classes
             {
                 Console.Write("Enter the status(pending, inprogress,completed): ");
                 InputStatus=Console.ReadLine().ToLower();
-                Status=Checkstatus(InputStatus);
+                Status= CheckStatus.Checkstatus(InputStatus);
             }
             Addtask(title,Description,DuoDate,priority,Status);
             Console.WriteLine("Your Task Added Successfully! ");

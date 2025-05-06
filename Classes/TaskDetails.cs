@@ -8,10 +8,10 @@ namespace TechGatesOOPSession.Classes
 {
     public class TaskDetails
     {
-        public string Title;
-        public string Description;
-        public string DuoDate;
-        public string Priority;
-        public StatusEnum Status;
+        public string Title { set; get; }
+        public string Description { set; get; }
+        public string DuoDate { set; get; }
+        public string Priority { set; get; }
+        public StatusEnum Status { set; get; }
     }
 }

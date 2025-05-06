@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TechGatesOOPSession.Classes
 {
-    public abstract class CheckStatus
+    public static class CheckStatus
     {
-        public StatusEnum Checkstatus(string Status)
+        public static StatusEnum Checkstatus(string Status)
         {
             if (Enum.TryParse(Status, true, out StatusEnum state))
             {

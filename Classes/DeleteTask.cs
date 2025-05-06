@@ -8,7 +8,7 @@ using TechGatesOOPSession.Interfaces;
 
 namespace TechGatesOOPSession.Classes
 {
-    internal class DeleteTask : ITaskExecution,ITaskFound
+    internal class DeleteTask : ITaskExecutor
     {
         private Tasks _tasks;
         public DeleteTask(Tasks tasks)
@@ -23,16 +23,12 @@ namespace TechGatesOOPSession.Classes
                 _tasks.AllTasks.Remove(IsFound);
             }
         }
-        public TaskDetails FoundTask(string Title)
-        {
-            return _tasks.AllTasks.FirstOrDefault(x => x.Title == Title);
-        }
-        public void excute()
+        public void Execute()
         {
             string Title;
             Console.Write("Enter the title of the task you want to delete: ");
             Title = Console.ReadLine().ToLower();
-            var Founded =FoundTask(Title);
+            var Founded =_tasks.FindTask(Title);
             if (Founded != null)
             {
                 _tasks.AllTasks.Remove(Founded);

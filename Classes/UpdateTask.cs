@@ -7,7 +7,7 @@ using TechGatesOOPSession.Interfaces;
 
 namespace TechGatesOOPSession.Classes
 {
-    internal class UpdateTask : CheckStatus, ITaskFound, ITaskExecution
+    internal class UpdateTask :  ITaskExecutor
     {
         private Tasks _tasks;
         public UpdateTask(Tasks tasks)
@@ -23,25 +23,22 @@ namespace TechGatesOOPSession.Classes
             }
 
         }
-        public TaskDetails FoundTask(string Title)
-        {
-            return _tasks.AllTasks.FirstOrDefault(x => x.Title == Title);
-        }
-        public void excute()
+
+        public void Execute()
         {
             string Title;
             string InputStatus;
             StatusEnum Status = StatusEnum.unknown;
             Console.Write("Enter the title of the task you want to update: ");
             Title = Console.ReadLine().ToLower();
-            var Founded = FoundTask(Title);
+            var Founded = _tasks.FindTask(Title);
             if (Founded != null)
             {
                 while (Status == StatusEnum.unknown)
                 {
                     Console.Write("Enter the new Status: ");
                     InputStatus = Console.ReadLine().ToLower();
-                    Status = Checkstatus(InputStatus);
+                    Status = CheckStatus.Checkstatus(InputStatus);
                 }
                 Founded.Status = Status;
                 Console.WriteLine("Status updated successfully!");

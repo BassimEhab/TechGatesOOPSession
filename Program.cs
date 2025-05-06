@@ -19,16 +19,16 @@ while (true)
         switch (result)
         {
             case 1:
-                addTask.excute();
+                addTask.Execute();
                 break;
             case 2:
-                deleteTask.excute();
+                deleteTask.Execute();
                 break;
             case 3:
-                updateTask.excute(); 
+                updateTask.Execute(); 
                 break;
             case 4:
-                viewTask.excute();
+                viewTask.Execute();
                 break;
             default:
                 Console.WriteLine("safely EXIT!");

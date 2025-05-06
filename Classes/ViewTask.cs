@@ -7,7 +7,7 @@ using TechGatesOOPSession.Interfaces;
 
 namespace TechGatesOOPSession.Classes
 {
-    internal class ViewTask : CheckStatus , ITaskExecution
+    internal class ViewTask : ITaskExecutor
     {
         private Tasks _tasks;
         public ViewTask(Tasks tasks)
@@ -43,15 +43,15 @@ namespace TechGatesOOPSession.Classes
                 }
             }
         }
-        public void excute()
+        public void Execute()
         {
             string InputStatus;
             StatusEnum Status = StatusEnum.unknown;
-            Console.Write("Enter the status to see the tasks : ");
-            InputStatus = Console.ReadLine().ToLower();
             while (Status == StatusEnum.unknown)
             {
-                Status = Checkstatus(InputStatus);
+                Console.Write("Enter the status to see the tasks : ");
+                InputStatus = Console.ReadLine().ToLower();
+                Status = CheckStatus.Checkstatus(InputStatus);
             }
             Viewtasks(Status);
         }
